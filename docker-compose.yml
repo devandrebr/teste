@@ -1,0 +1,50 @@
+services:
+  testegeodb:
+    image: mysql:8.4
+    container_name: testegeodb
+    restart: always
+    ports:
+      - "3312:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: D9cK3R_MySQL_2024!
+      MYSQL_DATABASE: apptestegeo
+      MYSQL_USER: apptestegeo
+      MYSQL_PASSWORD: D9cK3R_MySQL_2024!
+    volumes:
+      - db_data_mysql:/var/lib/mysql
+    networks:
+      - testegeo_andre
+
+  testegeophp:
+    build:
+      context: .
+      dockerfile: ./backend/Dockerfile
+    container_name: testegeophp
+    restart: always
+    working_dir: /var/www/app
+    volumes:
+      - ./backend:/var/www/app
+    networks:
+      - testegeo_andre
+    depends_on:
+      - testegeodb
+
+  testegeonginx:
+    image: nginx:latest
+    container_name: testegeonginx
+    restart: always
+    ports:
+      - "10212:80"
+    volumes:
+      - ./backend:/var/www/app
+      - ./nginx/:/etc/nginx/conf.d
+    networks:
+      - testegeo_andre
+    depends_on:
+      - testegeophp
+
+volumes:
+  db_data_mysql:
+
+networks:
+  testegeo_andre:
