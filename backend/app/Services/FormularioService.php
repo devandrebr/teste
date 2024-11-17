@@ -92,7 +92,7 @@ class FormularioService implements FormularioServiceInterface
             $resposta = $this->formRespostaRepository->salvar($dadosResposta);
 
             if (!is_int($resposta->id) || (int)$resposta->id <= 0)
-            throw new Exception($validator->errors(), 400);
+                throw new Exception($validator->errors(), 400);
 
             $idResposta = $dadosResposta['id'] = $resposta->id; 
 
@@ -115,7 +115,7 @@ class FormularioService implements FormularioServiceInterface
 
             Log::error('['.date('Y-m-d H:i:s').'] HTTP CODE: '.$e->getCode().' - MSG: '.$e->getMessage().' - FILE: '.__FILE__);
         
-            throw new Exception('Erro no service ao salvar os dados da resposta do formulário.', 500);
+            throw new Exception('Erro no service ao salvar os dados da resposta do formulário.', 400);
         }
     }
 

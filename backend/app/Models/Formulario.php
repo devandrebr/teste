@@ -14,7 +14,7 @@ class Formulario extends Model
     {
         $arquivo = storage_path('app/form/forms_definition.json');
         if (!file_exists($arquivo))
-            throw new Exception('Arquivo .json com as definições do formulário não localizado.', 500);
+            throw new Exception('Arquivo .json com as definições do formulário não localizado.', 400);
 
         $conteudo = file_get_contents($arquivo);
         $json = json_decode($conteudo, true);

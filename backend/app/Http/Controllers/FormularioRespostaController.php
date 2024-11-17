@@ -26,7 +26,7 @@ class FormularioRespostaController extends Controller
             return response()->json(['message' => 'Cadastro realizado com sucesso', 'data' => $dados], 201);
         } catch (Exception $e) {
             $msg = $e->getMessage();
-            $codigoHttp = !$this->validarCodigoHttp((int)$e->getCode()) ? 500 : $e->getCode();
+            $codigoHttp = !$this->validarCodigoHttp((int)$e->getCode()) ? 400 : $e->getCode();
 
             return response()->json(['message' => $msg], $codigoHttp);
         }
@@ -45,7 +45,7 @@ class FormularioRespostaController extends Controller
             return response()->json(['message' => 'Consulta realizada com sucesso', 'data' => $dados]);
         } catch (Exception $e) {
             $msg = $e->getMessage();
-            $codigoHttp = !$this->validarCodigoHttp((int)$e->getCode()) ? 500 : $e->getCode();
+            $codigoHttp = !$this->validarCodigoHttp((int)$e->getCode()) ? 400 : $e->getCode();
 
             return response()->json(['message' => $msg], $codigoHttp);
         }
