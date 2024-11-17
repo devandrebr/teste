@@ -18,35 +18,30 @@ class FormularioRespostaController extends Controller
     public function cadastro(Request $request, $id_formulario)
     {
         try {
-            // @todo criando...
-
-            $request['user_agent'] = $userAgent; 
-            $request['endereco_ip'] = $enderecoIp; 
+            $request['user_agent'] = $_SERVER['HTTP_USER_AGENT']; 
+            $request['endereco_ip'] = $_SERVER['REMOTE_ADDR']; 
 
             $dados = $this->formService->salvarRespostas($request, $id_formulario);
 
-            dd($dados);
-
-            return response()->json(['message' => 'Formulário não encontrado'], 404);
+            return response()->json(['message' => 'Cadastro realizado com sucesso', 'data' => $dados], 201);
         } catch (Exception $e) {
             $msg = $e->getMessage();
-            $codigoHttp = (int)$e->getCode() == 0 ? 500 : $e->getCode();
+            $codigoHttp = !$this->validarCodigoHttp((int)$e->getCode()) ? 500 : $e->getCode();
 
             return response()->json(['message' => $msg], $codigoHttp);
         }
     }
 
+    // @todo adicionar limit com offset para paginar o resultado
     public function lista($id_formulario)
     {
         try {
-            $dados = $this->formService->listaRespostas($id_formulario);
+            $dados = $this->formService->listaRespostasLabel($id_formulario);
 
-            dd($dados);
-
-            return response()->json(['data' => $dados]);
+            return response()->json(['message' => 'Consulta realizada com sucesso', 'data' => $dados]);
         } catch (Exception $e) {
             $msg = $e->getMessage();
-            $codigoHttp = (int)$e->getCode() == 0 ? 500 : $e->getCode();
+            $codigoHttp = !$this->validarCodigoHttp((int)$e->getCode()) ? 500 : $e->getCode();
 
             return response()->json(['message' => $msg], $codigoHttp);
         }

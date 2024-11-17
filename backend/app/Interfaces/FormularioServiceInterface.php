@@ -7,5 +7,6 @@ use Illuminate\Http\Request;
 interface FormularioServiceInterface
 {
     public function salvarRespostas(Request $request, $formId);
-    public function listaRespostas($formId);
+    public function listaRespostasLabel($formId);
+    public function listaForm();
 }

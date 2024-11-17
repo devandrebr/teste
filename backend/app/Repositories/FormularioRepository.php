@@ -16,4 +16,12 @@ class FormularioRepository implements FormularioRepositoryInterface
 
         return $formulario;
     }
+
+    public function getLista()
+    {
+        $form = new Formulario();
+        $formularios = $form->registros();
+
+        return $formularios;
+    }
 }

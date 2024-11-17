@@ -10,13 +10,25 @@ class FormularioRespostaRepository implements FormularioRespostaRepositoryInterf
 {
     public function salvar(array $data)
     {
-        // @todo: lógica para salvar os dados no banco de dados usando o modelo Preenchimento
         return FormularioResposta::create($data); 
     }
 
-    public function getByForm($formId)
+    public function getByForm(string $formId)
     {
-        // @todo: lógica para buscar as respostas do formulário no banco de dados
-        return FormularioResposta::where('form_id', $formId)->get(); 
+        return FormularioResposta::where('id_formulario', $formId)->get(); 
+    }
+
+    public function getRespostas(int $respostaId)
+    {
+        $resposta = FormularioResposta::find($respostaId);
+        return $resposta->labels; 
+    }
+
+    public function getRespostasByForm(string $formId)
+    {
+        $form = new FormularioResposta();
+        $resposta = $form->getRespostasLabelsByForm($formId);
+
+        return $resposta; 
     }
 }
