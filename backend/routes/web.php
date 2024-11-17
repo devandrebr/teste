@@ -16,7 +16,7 @@ Route::withoutMiddleware([VerifyCsrfToken::class])->group(function () {
         Route::prefix('formularios')->group(function () {
             Route::get('/', [FormularioController::class, 'lista']);
             Route::post('/{id_formulario}/preenchimentos', [FormularioRespostaController::class, 'cadastro']);
-            Route::get('/{id_formulario}/preenchimentos', [FormularioRespostaController::class, 'lista']);
+            Route::get('/{id_formulario}/preenchimentos/{page?}', [FormularioRespostaController::class, 'lista']);
         });
     });
 });

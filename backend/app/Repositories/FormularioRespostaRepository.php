@@ -24,10 +24,10 @@ class FormularioRespostaRepository implements FormularioRespostaRepositoryInterf
         return $resposta->labels; 
     }
 
-    public function getRespostasByForm(string $formId)
+    public function getRespostasByForm(string $formId, int $offset, int $limit)
     {
         $form = new FormularioResposta();
-        $resposta = $form->getRespostasLabelsByForm($formId);
+        $resposta = $form->getRespostasLabelsByForm($formId, $offset, $limit);
 
         return $resposta; 
     }

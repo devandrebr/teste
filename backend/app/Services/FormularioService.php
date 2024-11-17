@@ -119,7 +119,7 @@ class FormularioService implements FormularioServiceInterface
         }
     }
 
-    public function listaRespostasLabel($formId)
+    public function listaRespostasLabel(string $formId, int $offset, int $limit)
     {
         $formulario = $this->formRepository->getById($formId);
 
@@ -127,7 +127,7 @@ class FormularioService implements FormularioServiceInterface
             throw new Exception('Formulário não encontrado', 404);
         }
 
-        $respostas = $this->formRespostaRepository->getRespostasByForm($formulario['id']);
+        $respostas = $this->formRespostaRepository->getRespostasByForm($formId, $offset, $limit);
 
         return $respostas;
     }

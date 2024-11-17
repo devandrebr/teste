@@ -32,11 +32,15 @@ class FormularioRespostaController extends Controller
         }
     }
 
-    // @todo adicionar limit com offset para paginar o resultado
-    public function lista($id_formulario)
+    public function lista($id_formulario, $page = 1)
     {
         try {
-            $dados = $this->formService->listaRespostasLabel($id_formulario);
+            $limit = 20;
+            $offset = ($page - 1) * $limit;
+            
+            $dados = $this->formService->listaRespostasLabel($id_formulario, $offset, $limit);
+
+            $dados['page'] = $page;
 
             return response()->json(['message' => 'Consulta realizada com sucesso', 'data' => $dados]);
         } catch (Exception $e) {

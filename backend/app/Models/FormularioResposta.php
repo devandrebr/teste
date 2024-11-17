@@ -26,9 +26,10 @@ class FormularioResposta extends Model
         return $this->hasMany(FormularioRespostaLabel::class, 'id_resposta');
     }
 
-    public function getRespostasLabelsByForm(string $formId)
+    public function getRespostasLabelsByForm(string $formId, int $offset, int $limit)
     {
         return FormularioResposta::with('labels')
+            ->offset($offset)->limit($limit)
             ->where('id_formulario', $formId) 
             ->get()->toArray();
     }
