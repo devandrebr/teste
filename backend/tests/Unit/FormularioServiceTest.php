@@ -38,15 +38,15 @@ class FormularioServiceTest extends TestCase
     {
         // Dados de exemplo para o formulário
         $formulario = [
-            'id' => 1,
+            'id' => 'form-1',
             'fields' => [
                 [
-                    'id' => 'nome',
+                    'id' => 'field-1-1',
                     'type' => 'text',
                     'required' => true
                 ],
                 [
-                    'id' => 'email',
+                    'id' => 'field-1-2',
                     'type' => 'text',
                     'required' => true
                 ]
@@ -114,10 +114,10 @@ class FormularioServiceTest extends TestCase
     public function testSalvarRespostasValidacaoFalha()
     {
         $formulario = [
-            'id' => 1,
+            'id' => 'form-1',
             'fields' => [
                 [
-                    'id' => 'nome',
+                    'id' => 'field-1-1',
                     'type' => 'text',
                     'required' => true
                 ],
