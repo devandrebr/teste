@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "5cc892cb-45d0-41a9-ad9b-a85b2fc87da5",
+		"name": "Teste Geo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3590803"
+	},
+	"item": [
+		{
+			"name": "Formulário",
+			"item": [
+				{
+					"name": "Listar Preenchimentos do Form",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10212/api/formularios/form-1/preenchimentos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10212",
+							"path": [
+								"api",
+								"formularios",
+								"form-1",
+								"preenchimentos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Formulários",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:10212/api/formularios/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10212",
+							"path": [
+								"api",
+								"formularios",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Resposta",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fields\": [\r\n      {\r\n        \"id\": \"field-1-1\", \r\n        \"texto\": \"Nome Teste Silva\"\r\n      },\r\n      {\r\n        \"id\": \"field-1-2\",\r\n        \"texto\": \"22\"\r\n      },\r\n      {\r\n        \"id\": \"field-1-3\",\r\n        \"texto\": \"Sim\"\r\n      }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:10212/api/formularios/form-1/preenchimentos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "10212",
+							"path": [
+								"api",
+								"formularios",
+								"form-1",
+								"preenchimentos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
