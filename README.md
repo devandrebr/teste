@@ -10,6 +10,8 @@ A aplicação está expostas nas portas `10212`(api) e `3312`(mysql) usando o Do
 
 4º - No diretório */postman* tem a collection do Postman para importar e ter os endpoints para fazer os testes
 
+5º - Para executar os testes: `docker exec testegeophp ./vendor/bin/phpunit`
+
 ## Preenchimento Formulário
 
 [HTTP: GET] *http://localhost:10212/api/formularios/{id_formulario}/preenchimentos/{pagina}* - Listar os preenchimentos do formulário, onde {id_formulario} na url é o id do formulário e a {pagina} é a página pois cada consulta são retornados 20 registros
