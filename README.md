@@ -2,11 +2,13 @@
 
 A aplicação está expostas nas portas `10212`(api) e `3312`(mysql) usando o Docker, para executar o projeto é necessário realizar o passo a passo abaixo:
 
-1º - Com o docker aberto, executar o comando: `docker-compose up -d`
+1º - Abrir o diretório /backend e criar o arquivo `.env`, duplicando o arquivo `.env.example` e renomeando ele para `.env`
 
-2º - Após a criação dos containers, executar o comando do composer `docker exec testegeophp composer install` e depois da migration do Laravel, para criar as tabelas e os registros no banco: `docker exec testegeophp php artisan migrate`
+2º - Com o docker aberto, executar o comando: `docker-compose up -d`
 
-3º - No diretório */postman* tem a collection do Postman para importar e ter os endpoints para fazer os testes
+3º - Após a criação dos containers, executar o comando do composer `docker exec testegeophp composer install` e depois da migration do Laravel, para criar as tabelas e os registros no banco: `docker exec testegeophp php artisan migrate`
+
+4º - No diretório */postman* tem a collection do Postman para importar e ter os endpoints para fazer os testes
 
 ## Preenchimento Formulário
 
